@@ -22,25 +22,6 @@ const TabButton = ({
   </button>
 );
 
-const messages = [
-  {
-    message: 'What kind of nonsense is this',
-    variant: 'outline' as const,
-    position: 'right' as const,
-  },
-  {
-    message: 'Put me on the Council and not make me a Master??',
-    variant: 'outline' as const,
-    position: 'left' as const,
-  },
-  {
-    message:
-      "That's never been done in the history of the Jedi. It's insulting!",
-    variant: 'outline' as const,
-    position: 'right' as const,
-  },
-];
-
 const ChatBubblePage = () => {
   const [activeTab, setActiveTab] = useState<'CLI' | 'Manual'>('CLI');
 
@@ -58,18 +39,30 @@ const ChatBubblePage = () => {
         </p>
 
         <div className="bg-code-bg p-8 border border-gray-800 rounded-lg mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-          {messages.map((msg, index) => (
-            <ChatBubble
-              key={index}
-              message={msg.message}
-              variant={msg.variant}
-              position={msg.position}
-            />
-          ))}
+          <ChatBubble
+            message="Hello! How are you?"
+            position="left"
+            variant="outline"
+          />
+          <ChatBubble
+            message="I'm good, thanks! And you?"
+            position="right"
+            variant="default"
+          />
+          <ChatBubble
+            message="Just working on a project."
+            position="left"
+            variant="destructive"
+          />
+          <ChatBubble
+            message="Sounds great!"
+            position="right"
+            variant="secondary"
+          />
         </div>
 
         <CodeBlock
-          code={`<ChatBubble text="Hello! How are you?" alignment="left" color="blue" />\n<ChatBubble text="I'm good, thanks! And you?" alignment="right" color="green" />`}
+          code={`<ChatBubble message="Hello! How are you?" position="left" variant="outline" />\n<ChatBubble message="I'm good, thanks! And you?" position="right" variant="default" />`}
           language="jsx"
         />
       </section>
@@ -126,7 +119,7 @@ const ChatBubblePage = () => {
       <section className="mb-12">
         <h3 className="text-lg font-semibold mb-4">Copy the source code</h3>
         <CodeBlock
-          code={`import React from 'react';\n\nexport default function ChatBubble() {\n  return (\n    <div className="p-3 rounded-lg bg-blue-500 text-white">\n      Hello! This is a chat bubble.\n    </div>\n  );\n}`}
+          code={`import React from 'react';\n\nexport default function ChatBubble() {\n  return (\n    <ChatBubble message="Hello! This is a chat bubble." position="left" variant="blue" />\n  );\n}`}
           language="javascript"
         />
       </section>
@@ -147,16 +140,14 @@ const ChatBubblePage = () => {
             </thead>
             <tbody>
               <tr>
-                <td className="py-2 px-4 border-b border-gray-700">text</td>
+                <td className="py-2 px-4 border-b border-gray-700">message</td>
                 <td className="py-2 px-4 border-b border-gray-700">string</td>
                 <td className="py-2 px-4 border-b border-gray-700">
                   The message text displayed inside the chat bubble.
                 </td>
               </tr>
               <tr>
-                <td className="py-2 px-4 border-b border-gray-700">
-                  alignment
-                </td>
+                <td className="py-2 px-4 border-b border-gray-700">position</td>
                 <td className="py-2 px-4 border-b border-gray-700">
                   'left' | 'right'
                 </td>
@@ -165,7 +156,7 @@ const ChatBubblePage = () => {
                 </td>
               </tr>
               <tr>
-                <td className="py-2 px-4 border-b border-gray-700">color</td>
+                <td className="py-2 px-4 border-b border-gray-700">variant</td>
                 <td className="py-2 px-4 border-b border-gray-700">
                   'blue' | 'pink' | 'green' | 'yellow' | 'red'
                 </td>

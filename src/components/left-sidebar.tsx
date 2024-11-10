@@ -7,41 +7,47 @@ export default function LeftSidebar() {
     {
       title: 'Guide',
       items: [
-        'Introduction',
-        'Installation',
-        { name: 'CLI', badge: 'New' },
-        'Design Principles',
-        'Routing',
-        'Upgrade to v2',
+        { name: 'Introduction', url: '/guide/introduction' },
+        { name: 'Installation', url: '/guide/installation' },
+        { name: 'CLI', badge: 'New', url: '/guide/cli' },
+        { name: 'Design Principles', url: '/guide/design-principles' },
+        { name: 'Routing', url: '/guide/routing' },
+        { name: 'Upgrade to v2', url: '/guide/upgrade-to-v2' },
       ],
     },
     {
       title: 'Frameworks',
-      items: ['Next.js', 'Vite', 'Remix', 'Astro'],
+      items: [
+        { name: 'Next.js', url: '/frameworks/nextjs' },
+        { name: 'Vite', url: '/frameworks/vite' },
+        { name: 'Remix', url: '/frameworks/remix' },
+        { name: 'Astro', url: '/frameworks/astro' },
+      ],
     },
     {
       title: 'Customization',
       items: [
-        'Theme',
-        { name: 'Layout', badge: 'Updated' },
-        'Colors',
-        'Customize theme',
-        'Create theme',
-        'Dark mode',
-        'Override styles',
-        'Custom variants',
+        { name: 'Theme', url: '/customization/theme' },
+        { name: 'Layout', badge: 'Updated', url: '/customization/layout' },
+        { name: 'Colors', url: '/customization/colors' },
+        { name: 'Customize theme', url: '/customization/customize-theme' },
+        { name: 'Create theme', url: '/customization/create-theme' },
+        { name: 'Dark mode', url: '/customization/dark-mode' },
+        { name: 'Override styles', url: '/customization/override-styles' },
+        { name: 'Custom variants', url: '/customization/custom-variants' },
       ],
     },
     {
       title: 'Components',
       items: [
-        'Accordion',
-        'Autocomplete',
-        'Buttons',
-        'Cards',
-        'Modals',
-        'Tables',
-        'Tabs',
+        { name: 'Accordion', url: '/components/accordion' },
+        { name: 'Autocomplete', url: '/components/autocomplete' },
+        { name: 'Buttons', url: '/components/buttons' },
+        { name: 'Cards', url: '/components/cards' },
+        { name: 'Chat Bubble', url: 'docs/components/chat-bubble' },
+        { name: 'Modals', url: '/components/modals' },
+        { name: 'Tables', url: '/components/tables' },
+        { name: 'Tabs', url: '/components/tabs' },
       ],
     },
   ];
@@ -88,10 +94,14 @@ export default function LeftSidebar() {
                       typeof item === 'object' && item.badge
                         ? item.badge
                         : null;
+                    const url =
+                      typeof item === 'object' && item.url
+                        ? item.url
+                        : `#${name.toLowerCase().replace(/\s+/g, '-')}`;
                     return (
                       <li key={name} className="flex items-center">
                         <a
-                          href={`#${name.toLowerCase().replace(/\s+/g, '-')}`}
+                          href={url}
                           className="block text-gray-400 hover:text-white text-sm py-1 flex-1"
                         >
                           {name}
