@@ -4,50 +4,55 @@ import { ChevronDown, ChevronRight } from 'lucide-react';
 
 export default function LeftSidebar() {
   const sections = [
-    {
-      title: 'Guide',
-      items: [
-        { name: 'Introduction', url: '/guide/introduction' },
-        { name: 'Installation', url: '/guide/installation' },
-        { name: 'CLI', badge: 'New', url: '/guide/cli' },
-        { name: 'Design Principles', url: '/guide/design-principles' },
-        { name: 'Routing', url: '/guide/routing' },
-        { name: 'Upgrade to v2', url: '/guide/upgrade-to-v2' },
-      ],
-    },
-    {
-      title: 'Frameworks',
-      items: [
-        { name: 'Next.js', url: '/frameworks/nextjs' },
-        { name: 'Vite', url: '/frameworks/vite' },
-        { name: 'Remix', url: '/frameworks/remix' },
-        { name: 'Astro', url: '/frameworks/astro' },
-      ],
-    },
-    {
-      title: 'Customization',
-      items: [
-        { name: 'Theme', url: '/customization/theme' },
-        { name: 'Layout', badge: 'Updated', url: '/customization/layout' },
-        { name: 'Colors', url: '/customization/colors' },
-        { name: 'Customize theme', url: '/customization/customize-theme' },
-        { name: 'Create theme', url: '/customization/create-theme' },
-        { name: 'Dark mode', url: '/customization/dark-mode' },
-        { name: 'Override styles', url: '/customization/override-styles' },
-        { name: 'Custom variants', url: '/customization/custom-variants' },
-      ],
-    },
+    // {
+    //   title: 'Guide',
+    //   items: [
+    //     { name: 'Introduction', url: '/guide/introduction' },
+    //     { name: 'Installation', url: '/guide/installation' },
+    //     { name: 'CLI', badge: 'New', url: '/guide/cli' },
+    //     { name: 'Design Principles', url: '/guide/design-principles' },
+    //     { name: 'Routing', url: '/guide/routing' },
+    //     { name: 'Upgrade to v2', url: '/guide/upgrade-to-v2' },
+    //   ],
+    // },
+    // {
+    //   title: 'Frameworks',
+    //   items: [
+    //     { name: 'Next.js', url: '/frameworks/nextjs' },
+    //     { name: 'Vite', url: '/frameworks/vite' },
+    //     { name: 'Remix', url: '/frameworks/remix' },
+    //     { name: 'Astro', url: '/frameworks/astro' },
+    //   ],
+    // },
+    // {
+    //   title: 'Customization',
+    //   items: [
+    //     { name: 'Theme', url: '/customization/theme' },
+    //     { name: 'Layout', badge: 'Updated', url: '/customization/layout' },
+    //     { name: 'Colors', url: '/customization/colors' },
+    //     { name: 'Customize theme', url: '/customization/customize-theme' },
+    //     { name: 'Create theme', url: '/customization/create-theme' },
+    //     { name: 'Dark mode', url: '/customization/dark-mode' },
+    //     { name: 'Override styles', url: '/customization/override-styles' },
+    //     { name: 'Custom variants', url: '/customization/custom-variants' },
+    //   ],
+    // },
     {
       title: 'Components',
       items: [
-        { name: 'Accordion', url: '/components/accordion' },
-        { name: 'Autocomplete', url: '/components/autocomplete' },
-        { name: 'Buttons', url: '/components/buttons' },
-        { name: 'Cards', url: '/components/cards' },
-        { name: 'Chat Bubble', url: 'docs/components/chat-bubble' },
-        { name: 'Modals', url: '/components/modals' },
-        { name: 'Tables', url: '/components/tables' },
-        { name: 'Tabs', url: '/components/tabs' },
+        // { name: 'Accordion', url: '/components/accordion' },
+        // { name: 'Autocomplete', url: '/components/autocomplete' },
+        // { name: 'Buttons', url: '/components/buttons' },
+        // { name: 'Cards', url: '/components/cards' },
+        { name: 'Chat Bubble', url: '/docs/components/chat-bubble' },
+        {
+          name: 'Fade Overlay',
+          url: '/docs/components/fade-overlay',
+          badge: 'New',
+        },
+        // { name: 'Modals', url: '/components/modals' },
+        // { name: 'Tables', url: '/components/tables' },
+        // { name: 'Tabs', url: '/components/tabs' },
       ],
     },
   ];
