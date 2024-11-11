@@ -1,30 +1,30 @@
-'use client';
-import CodeBlock from '@/components/code-block';
-import PropsTable from '@/components/props-table';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'; // Ensure the path matches your setup
-import React, { useState } from 'react';
-import Image from 'next/image';
-import { FadeOverlay } from '@/components/ui/fade-overlay';
-import { Button } from '@/components/ui/button';
+"use client";
+import CodeBlock from "@/components/code-block";
+import PropsTable from "@/components/props-table";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"; // Ensure the path matches your setup
+import React, { useState } from "react";
+import Image from "next/image";
+import { FadeOverlay } from "@/components/ui/fade-overlay";
+import { Button } from "@/components/ui/button";
 
 const FadeOverlayPage = () => {
   const [overlay, setOverlay] = useState<boolean>(true);
   const fadeOverlayProps = [
     {
-      prop: 'visible',
-      type: 'boolean',
-      description: 'Controls the visibility of the fade overlay.',
+      prop: "visible",
+      type: "boolean",
+      description: "Controls the visibility of the fade overlay.",
     },
     {
-      prop: 'gradient',
+      prop: "gradient",
       type: "'default' | 'light' | 'dark'",
       description:
-        'Defines the gradient background of the overlay for different visual effects.',
+        "Defines the gradient background of the overlay for different visual effects.",
     },
     {
-      prop: 'duration',
+      prop: "duration",
       type: "'short' | 'medium' | 'long'",
-      description: 'Sets the duration of the fade transition effect.',
+      description: "Sets the duration of the fade transition effect.",
     },
   ];
 
@@ -42,7 +42,7 @@ const FadeOverlayPage = () => {
 
         <div className="relative bg-code-bg rounded-lg mb-4 grid gap-4">
           <Image
-            alt={'overlay example'}
+            alt={"overlay example"}
             width={1000}
             height={300}
             className="object-cover w-full rounded-lg"
@@ -79,14 +79,14 @@ const FadeOverlayPage = () => {
                   Step 1: Add the Component Code
                 </h3>
                 <p className="text-gray-400 mb-2">
-                  Create a new file named{' '}
+                  Create a new file named{" "}
                   <code className="text-gray-200 bg-gray-800 px-1 rounded">
                     fade-overlay.tsx
-                  </code>{' '}
-                  in your{' '}
+                  </code>{" "}
+                  in your{" "}
                   <code className="text-gray-200 bg-gray-800 px-1 rounded">
                     components/ui/
-                  </code>{' '}
+                  </code>{" "}
                   directory and add the following code:
                 </p>
                 <CodeBlock

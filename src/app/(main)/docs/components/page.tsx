@@ -1,7 +1,7 @@
-'use client';
-import CodeBlock from '@/components/code-block';
-import { ChatBubble } from '@/components/ui/chatbubble';
-import React, { useState } from 'react';
+"use client";
+import CodeBlock from "@/components/code-block";
+import { ChatBubble } from "@/components/ui/chatbubble";
+import React, { useState } from "react";
 
 const TabButton = ({
   label,
@@ -15,7 +15,7 @@ const TabButton = ({
   <button
     onClick={onClick}
     className={`px-4 py-2 text-sm font-semibold ${
-      active ? 'border-b-2 border-white text-white' : 'text-gray-400'
+      active ? "border-b-2 border-white text-white" : "text-gray-400"
     }`}
   >
     {label}
@@ -24,25 +24,25 @@ const TabButton = ({
 
 const messages = [
   {
-    message: 'What kind of nonsense is this',
-    variant: 'outline' as const,
-    position: 'right' as const,
+    message: "What kind of nonsense is this",
+    variant: "outline" as const,
+    position: "right" as const,
   },
   {
-    message: 'Put me on the Council and not make me a Master??',
-    variant: 'outline' as const,
-    position: 'left' as const,
+    message: "Put me on the Council and not make me a Master??",
+    variant: "outline" as const,
+    position: "left" as const,
   },
   {
     message:
       "That's never been done in the history of the Jedi. It's insulting!",
-    variant: 'outline' as const,
-    position: 'right' as const,
+    variant: "outline" as const,
+    position: "right" as const,
   },
 ];
 
 const ChatBubblePage = () => {
-  const [activeTab, setActiveTab] = useState<'CLI' | 'Manual'>('CLI');
+  const [activeTab, setActiveTab] = useState<"CLI" | "Manual">("CLI");
 
   return (
     <div className="max-w-4xl mx-auto text-gray-200 ">
@@ -80,16 +80,16 @@ const ChatBubblePage = () => {
         <div className="flex border-b border-gray-700 mb-4">
           <TabButton
             label="CLI"
-            active={activeTab === 'CLI'}
-            onClick={() => setActiveTab('CLI')}
+            active={activeTab === "CLI"}
+            onClick={() => setActiveTab("CLI")}
           />
           <TabButton
             label="Manual"
-            active={activeTab === 'Manual'}
-            onClick={() => setActiveTab('Manual')}
+            active={activeTab === "Manual"}
+            onClick={() => setActiveTab("Manual")}
           />
         </div>
-        {activeTab === 'CLI' ? (
+        {activeTab === "CLI" ? (
           <CodeBlock
             code="npm install @radix-ui/react-slot class-variance-authority"
             language="bash"

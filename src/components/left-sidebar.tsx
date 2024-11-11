@@ -56,6 +56,11 @@ export default function LeftSidebar() {
           url: "/docs/components/rating-star",
           badge: "New",
         },
+        {
+          name: "Stepper",
+          url: "/docs/components/stepper",
+          badge: "New",
+        },
         // { name: 'Modals', url: '/components/modals' },
         // { name: 'Tables', url: '/components/tables' },
         // { name: 'Tabs', url: '/components/tabs' },
