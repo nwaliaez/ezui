@@ -1,28 +1,28 @@
 // app/components/ChatBubblePage.tsx
-'use client';
-import CodeBlock from '@/components/code-block';
-import PropsTable from '@/components/props-table';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'; // Ensure the path matches your setup
-import { ChatBubble } from '@/components/ui/chatbubble';
-import React from 'react';
+"use client";
+import CodeBlock from "@/components/code-block";
+import PropsTable from "@/components/props-table";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"; // Ensure the path matches your setup
+import { ChatBubble } from "@/components/ui/chatbubble";
+import React from "react";
 
 const ChatBubblePage = () => {
   const chatBubbleProps = [
     {
-      prop: 'message',
-      type: 'string',
-      description: 'The message text displayed inside the chat bubble.',
+      prop: "message",
+      type: "string",
+      description: "The message text displayed inside the chat bubble.",
     },
     {
-      prop: 'position',
+      prop: "position",
       type: "'left' | 'right'",
       description:
-        'Sets the alignment of the chat bubble, either left or right.',
+        "Sets the alignment of the chat bubble, either left or right.",
     },
     {
-      prop: 'variant',
+      prop: "variant",
       type: "'default' | 'outline' | 'destructive' | 'secondary' | 'ghost' | 'link'",
-      description: 'Defines the background color of the chat bubble.',
+      description: "Defines the background color of the chat bubble.",
     },
   ];
 
@@ -88,14 +88,14 @@ const ChatBubblePage = () => {
                   Step 1: Add the Component Code
                 </h3>
                 <p className="text-gray-400 mb-2">
-                  First, create a new file named{' '}
+                  First, create a new file named{" "}
                   <code className="text-gray-200 bg-gray-800 px-1 rounded">
                     chat-bubble.tsx
-                  </code>{' '}
-                  inside your{' '}
+                  </code>{" "}
+                  inside your{" "}
                   <code className="text-gray-200 bg-gray-800 px-1 rounded">
                     components/ui/
-                  </code>{' '}
+                  </code>{" "}
                   directory. Then, copy and paste the following code into that
                   file:
                 </p>

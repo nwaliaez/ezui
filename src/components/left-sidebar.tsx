@@ -1,6 +1,7 @@
-'use client';
-import { useState } from 'react';
-import { ChevronDown, ChevronRight } from 'lucide-react';
+"use client";
+import { useState } from "react";
+import { ChevronDown, ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 export default function LeftSidebar() {
   const sections = [
@@ -38,17 +39,27 @@ export default function LeftSidebar() {
     //   ],
     // },
     {
-      title: 'Components',
+      title: "Components",
       items: [
         // { name: 'Accordion', url: '/components/accordion' },
         // { name: 'Autocomplete', url: '/components/autocomplete' },
         // { name: 'Buttons', url: '/components/buttons' },
         // { name: 'Cards', url: '/components/cards' },
-        { name: 'Chat Bubble', url: '/docs/components/chat-bubble' },
+        { name: "Chat Bubble", url: "/docs/components/chat-bubble" },
         {
-          name: 'Fade Overlay',
-          url: '/docs/components/fade-overlay',
-          badge: 'New',
+          name: "Fade Overlay",
+          url: "/docs/components/fade-overlay",
+          badge: "New",
+        },
+        {
+          name: "Rating Star",
+          url: "/docs/components/rating-star",
+          badge: "New",
+        },
+        {
+          name: "Stepper",
+          url: "/docs/components/stepper",
+          badge: "New",
         },
         // { name: 'Modals', url: '/components/modals' },
         // { name: 'Tables', url: '/components/tables' },
@@ -88,35 +99,35 @@ export default function LeftSidebar() {
               <div
                 className={`transition-all duration-300 overflow-hidden ${
                   openSections[section.title]
-                    ? 'max-h-screen opacity-100'
-                    : 'max-h-0 opacity-0'
+                    ? "max-h-screen opacity-100"
+                    : "max-h-0 opacity-0"
                 }`}
               >
                 <ul className="space-y-1 pl-4">
                   {section.items.map((item) => {
-                    const name = typeof item === 'string' ? item : item.name;
+                    const name = typeof item === "string" ? item : item.name;
                     const badge =
-                      typeof item === 'object' && item.badge
+                      typeof item === "object" && item.badge
                         ? item.badge
                         : null;
                     const url =
-                      typeof item === 'object' && item.url
+                      typeof item === "object" && item.url
                         ? item.url
-                        : `#${name.toLowerCase().replace(/\s+/g, '-')}`;
+                        : `#${name.toLowerCase().replace(/\s+/g, "-")}`;
                     return (
                       <li key={name} className="flex items-center">
-                        <a
+                        <Link
                           href={url}
                           className="block text-gray-400 hover:text-white text-sm py-1 flex-1"
                         >
                           {name}
-                        </a>
+                        </Link>
                         {badge && (
                           <span
                             className={`ml-2 px-2 py-0.5 text-xs rounded-full ${
-                              badge === 'New'
-                                ? 'bg-blue-600 text-white'
-                                : 'bg-gray-700 text-gray-300'
+                              badge === "New"
+                                ? "bg-blue-600 text-white"
+                                : "bg-gray-700 text-gray-300"
                             }`}
                           >
                             {badge}

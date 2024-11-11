@@ -1,5 +1,5 @@
 // components/ui/PropsTable.tsx
-import React from 'react';
+import React from "react";
 import {
   Table,
   TableBody,
@@ -7,7 +7,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
+} from "@/components/ui/table";
 
 interface PropsTableProps {
   props: {

@@ -1,9 +1,9 @@
 // Layout.tsx
 
-import Header from '@/components/header';
-import LeftSidebar from '@/components/left-sidebar';
-import RightSidebar from '@/components/right-sidebar';
-import { ReactNode } from 'react';
+import Header from "@/components/header";
+import LeftSidebar from "@/components/left-sidebar";
+import RightSidebar from "@/components/right-sidebar";
+import { ReactNode } from "react";
 
 interface LayoutProps {
   children: ReactNode;
@@ -21,7 +21,7 @@ export default function Layout({ children }: LayoutProps) {
         <LeftSidebar />
 
         {/* Main Content */}
-        <main className="flex-1 px-4 lg:px-8 py-8 min-h-screen">
+        <main className="flex-1 px-4 lg:px-8 py-8 min-h-screen max-w-5xl overflow-hidden">
           <div className="mx-auto max-w-4xl">{children}</div>
         </main>
 
