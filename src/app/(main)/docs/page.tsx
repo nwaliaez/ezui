@@ -1,8 +1,8 @@
-'use client';
-import CodeBlock from '@/components/code-block';
-import { Button } from '@/components/ui/button';
-import { ChatBubble } from '@/components/ui/chatbubble';
-import React, { useState } from 'react';
+"use client";
+import CodeBlock from "@/components/code-block";
+import { Button } from "@/components/ui/button";
+import { ChatBubble } from "@/components/ui/chatbubble";
+import React, { useState } from "react";
 
 const TabButton = ({
   label,
@@ -16,7 +16,7 @@ const TabButton = ({
   <button
     onClick={onClick}
     className={`px-4 py-2 text-sm font-semibold ${
-      active ? 'border-b-2 border-white text-white' : 'text-gray-400'
+      active ? "border-b-2 border-white text-white" : "text-gray-400"
     }`}
   >
     {label}
@@ -24,7 +24,7 @@ const TabButton = ({
 );
 
 const DocsLayout = () => {
-  const [activeTab, setActiveTab] = useState<'CLI' | 'Manual'>('CLI');
+  const [activeTab, setActiveTab] = useState<"CLI" | "Manual">("CLI");
 
   return (
     <div className="max-w-4xl mx-auto text-gray-200 ">
@@ -43,7 +43,7 @@ const DocsLayout = () => {
           <Button
             className="w-full py-2 px-4"
             variant="destructive"
-            animate={'scale'}
+            animate={"scale"}
           >
             Primary
           </Button>
@@ -61,16 +61,16 @@ const DocsLayout = () => {
         <div className="flex border-b border-gray-700 mb-4">
           <TabButton
             label="CLI"
-            active={activeTab === 'CLI'}
-            onClick={() => setActiveTab('CLI')}
+            active={activeTab === "CLI"}
+            onClick={() => setActiveTab("CLI")}
           />
           <TabButton
             label="Manual"
-            active={activeTab === 'Manual'}
-            onClick={() => setActiveTab('Manual')}
+            active={activeTab === "Manual"}
+            onClick={() => setActiveTab("Manual")}
           />
         </div>
-        {activeTab === 'CLI' ? (
+        {activeTab === "CLI" ? (
           <CodeBlock
             code="npm i framer-motion clsx tailwind-merge"
             language="bash"

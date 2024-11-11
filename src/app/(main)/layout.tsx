@@ -1,9 +1,9 @@
 // Layout.tsx
 
-import Header from '@/components/header';
-import LeftSidebar from '@/components/left-sidebar';
-import RightSidebar from '@/components/right-sidebar';
-import { ReactNode } from 'react';
+import Header from "@/components/header";
+import LeftSidebar from "@/components/left-sidebar";
+import RightSidebar from "@/components/right-sidebar";
+import { ReactNode } from "react";
 
 interface LayoutProps {
   children: ReactNode;
