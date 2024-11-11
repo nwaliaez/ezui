@@ -1,33 +1,33 @@
+// app/components/ChatBubblePage.tsx
 'use client';
 import CodeBlock from '@/components/code-block';
+import PropsTable from '@/components/props-table';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'; // Ensure the path matches your setup
 import { ChatBubble } from '@/components/ui/chatbubble';
-import React, { useState } from 'react';
-
-const TabButton = ({
-  label,
-  active,
-  onClick,
-}: {
-  label: string;
-  active: boolean;
-  onClick: () => void;
-}) => (
-  <button
-    onClick={onClick}
-    className={`px-4 py-2 text-sm font-semibold ${
-      active ? 'border-b-2 border-white text-white' : 'text-gray-400'
-    }`}
-  >
-    {label}
-  </button>
-);
+import React from 'react';
 
 const ChatBubblePage = () => {
-  const [activeTab, setActiveTab] = useState<'CLI' | 'Manual'>('CLI');
+  const chatBubbleProps = [
+    {
+      prop: 'message',
+      type: 'string',
+      description: 'The message text displayed inside the chat bubble.',
+    },
+    {
+      prop: 'position',
+      type: "'left' | 'right'",
+      description:
+        'Sets the alignment of the chat bubble, either left or right.',
+    },
+    {
+      prop: 'variant',
+      type: "'default' | 'outline' | 'destructive' | 'secondary' | 'ghost' | 'link'",
+      description: 'Defines the background color of the chat bubble.',
+    },
+  ];
 
   return (
-    <div className="max-w-4xl mx-auto text-gray-200 ">
-      {/* Basic Usage Header */}
+    <div className="max-w-4xl mx-auto text-gray-200">
       <h1 className="text-xl font-semibold mb-4 text-blue-400">Basic usage</h1>
 
       {/* Section: Chat Bubble Variants */}
@@ -70,56 +70,115 @@ const ChatBubblePage = () => {
       {/* Installation Section with Tabs */}
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Installation</h2>
-        <div className="flex border-b border-gray-700 mb-4">
-          <TabButton
-            label="CLI"
-            active={activeTab === 'CLI'}
-            onClick={() => setActiveTab('CLI')}
-          />
-          <TabButton
-            label="Manual"
-            active={activeTab === 'Manual'}
-            onClick={() => setActiveTab('Manual')}
-          />
-        </div>
-        {activeTab === 'CLI' ? (
-          <CodeBlock
-            code="npm install @radix-ui/react-slot class-variance-authority"
-            language="bash"
-          />
-        ) : (
-          <CodeBlock
-            code="Add your manual installation steps here."
-            language="text"
-          />
-        )}
+        <Tabs defaultValue="CLI" className="border-b border-gray-700 mb-4">
+          <TabsList>
+            <TabsTrigger value="CLI">CLI</TabsTrigger>
+            <TabsTrigger value="Manual">Manual</TabsTrigger>
+          </TabsList>
+          <TabsContent value="CLI">
+            <CodeBlock
+              code="npm install @radix-ui/react-slot class-variance-authority"
+              language="bash"
+            />
+          </TabsContent>
+          <TabsContent value="Manual">
+            <div>
+              <section className="mb-8">
+                <h3 className="text-lg font-semibold mb-2">
+                  Step 1: Add the Component Code
+                </h3>
+                <p className="text-gray-400 mb-2">
+                  First, create a new file named{' '}
+                  <code className="text-gray-200 bg-gray-800 px-1 rounded">
+                    chat-bubble.tsx
+                  </code>{' '}
+                  inside your{' '}
+                  <code className="text-gray-200 bg-gray-800 px-1 rounded">
+                    components/ui/
+                  </code>{' '}
+                  directory. Then, copy and paste the following code into that
+                  file:
+                </p>
+                <CodeBlock
+                  code={`import * as React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { cn } from '@/lib/utils';
+
+const chatBubbleVariants = cva(
+  'relative max-w-[80%] rounded-2xl px-4 py-2 text-sm',
+  {
+    variants: {
+      variant: {
+        default: 'bg-primary text-primary-foreground hover:bg-primary/90',
+        destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
+        outline: 'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
+        secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
+        ghost: 'hover:bg-accent hover:text-accent-foreground',
+        link: 'text-primary underline-offset-4 hover:underline',
+      },
+      position: {
+        left: 'rounded-bl-none self-start',
+        right: 'rounded-br-none self-end',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+      position: 'left',
+    },
+  }
+);
+
+export interface ChatBubbleProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof chatBubbleVariants> {
+  message: string;
+}
+
+const ChatBubble = React.forwardRef<HTMLDivElement, ChatBubbleProps>(
+  ({ className, variant, position, message, ...props }, ref) => {
+    return (
+      <div
+        className={cn(chatBubbleVariants({ variant, position, className }))}
+        ref={ref}
+        {...props}
+      >
+        {message}
+      </div>
+    );
+  }
+);
+ChatBubble.displayName = 'ChatBubble';
+
+export { ChatBubble, chatBubbleVariants };
+`}
+                  language="typescript"
+                />
+              </section>
+            </div>
+          </TabsContent>
+        </Tabs>
       </section>
 
-      {/* Utility File Section */}
+      {/* Import and Use the Component */}
       <section className="mb-12">
-        <h3 className="text-lg font-semibold mb-4">Add utility file</h3>
-        <CodeBlock
-          code={`// utils/twMerge.js\nimport { ClassValue, clsx } from "clsx";\nimport { twMerge } from "tailwind-merge";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}`}
-          language="javascript"
-        />
-      </section>
-
-      {/* Configuration Code Section */}
-      <section className="mb-12">
-        <h3 className="text-lg font-semibold mb-4">
-          Add the following code in tailwind.config.js file
+        <h3 className="text-lg font-semibold mb-2">
+          Step 2: Import and Use the Component
         </h3>
+        <p className="text-gray-400 mb-2">
+          Now you can import and use the <strong>ChatBubble</strong> component
+          in your Next.js application as shown below.
+        </p>
         <CodeBlock
-          code={`const defaultTheme = require("tailwindcss/defaultTheme");\nconst colors = require("tailwindcss/colors");\nconst flattenColorPalette = require("tailwindcss/lib/util/flattenColorPalette");\n\nmodule.exports = {\n  content: ["./src/**/*.{js,ts,jsx,tsx}"],\n  darkMode: "class",\n  theme: { /* rest of the code */ },\n  plugins: [\n    addVariablesForColors,\n  ],\n};\n\nfunction addVariablesForColors({ addBase, theme }) {\n  const colors = flattenColorPalette(theme("colors"));\n  const newVars = Object.fromEntries(\n    Object.entries(colors).map(([key, val]) => [\`--\${key}\`, val])\n  );\n}`}
-          language="javascript"
-        />
-      </section>
+          code={`import { ChatBubble } from '@/components/ui/chat-bubble';
 
-      {/* Copy Source Code Section */}
-      <section className="mb-12">
-        <h3 className="text-lg font-semibold mb-4">Copy the source code</h3>
-        <CodeBlock
-          code={`import React from 'react';\n\nexport default function ChatBubble() {\n  return (\n    <ChatBubble message="Hello! This is a chat bubble." position="left" variant="blue" />\n  );\n}`}
+export default function Example() {
+  return (
+    <div className="flex flex-col space-y-2">
+      <ChatBubble message="Hello! How are you?" position="left" variant="outline" />
+      <ChatBubble message="I'm good, thanks! And you?" position="right" variant="default" />
+    </div>
+  );
+}`}
           language="javascript"
         />
       </section>
@@ -127,46 +186,7 @@ const ChatBubblePage = () => {
       {/* Props Table */}
       <section className="mb-12">
         <h3 className="text-lg font-semibold mb-4">Props</h3>
-        <div className="bg-gray-900 rounded-lg overflow-hidden">
-          <table className="w-full text-left text-gray-300">
-            <thead className="bg-gray-800">
-              <tr>
-                <th className="py-2 px-4 border-b border-gray-700">Prop</th>
-                <th className="py-2 px-4 border-b border-gray-700">Type</th>
-                <th className="py-2 px-4 border-b border-gray-700">
-                  Description
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="py-2 px-4 border-b border-gray-700">message</td>
-                <td className="py-2 px-4 border-b border-gray-700">string</td>
-                <td className="py-2 px-4 border-b border-gray-700">
-                  The message text displayed inside the chat bubble.
-                </td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 border-b border-gray-700">position</td>
-                <td className="py-2 px-4 border-b border-gray-700">
-                  'left' | 'right'
-                </td>
-                <td className="py-2 px-4 border-b border-gray-700">
-                  Sets the alignment of the chat bubble, either left or right.
-                </td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 border-b border-gray-700">variant</td>
-                <td className="py-2 px-4 border-b border-gray-700">
-                  'blue' | 'pink' | 'green' | 'yellow' | 'red'
-                </td>
-                <td className="py-2 px-4 border-b border-gray-700">
-                  Defines the background color of the chat bubble.
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <PropsTable props={chatBubbleProps} />
       </section>
     </div>
   );
